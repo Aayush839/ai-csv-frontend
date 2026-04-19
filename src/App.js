@@ -8,8 +8,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const API_BASE = "https://ai-csv-dashboard-1.onrender.com";
-
+const API_BASE =  process.env.REACT_APP_API_BASE;
 export default function App() {
   const [file, setFile] = useState(null);
   const [uploaded, setUploaded] = useState(false);
