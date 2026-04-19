@@ -65,6 +65,14 @@ export default function App() {
     }
   };
 
+  const keys = chartData.length > 0 ? Object.keys(chartData[0]) : [];
+
+const xKey =
+  keys.find(k => typeof chartData[0][k] === "string") || keys[0];
+
+const yKey =
+  keys.find(k => typeof chartData[0][k] === "number") || keys[1];
+
   return (
     <div
       style={{
@@ -162,10 +170,7 @@ export default function App() {
               >
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={chartData}>
-                    <XAxis
-                      dataKey="product_name"
-                      stroke="#94a3b8"
-                    />
+                    <XAxis dataKey={xKey} stroke="#94a3b8" />
                     <YAxis stroke="#94a3b8" />
                     <Tooltip
                       contentStyle={{
@@ -174,7 +179,7 @@ export default function App() {
                         color: "#fff",
                       }}
                     />
-                    <Bar dataKey="price" fill="#38bdf8" />
+                    <Bar dataKey={yKey} fill="#38bdf8" />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
